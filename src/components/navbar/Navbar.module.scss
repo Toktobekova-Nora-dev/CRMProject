@@ -1,68 +1,81 @@
-.nav {
-  width: 300px;
-  background-color: #f9fbfc;
-  height: 100vh;
-  padding: 20px;
+.navbar {
   display: flex;
   flex-direction: column;
-}
-
-.logo {
-  font-size: 22px;
-  font-weight: bold;
-  margin-bottom: 40px;
-  color: #007bff;
-}
-
-.menuList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  flex: 1;
-}
-
-.linkItem {
-  a {
-    color: #333;
-    text-decoration: none;
-    transition: 0.3s;
-
-    &:hover {
-      color: #007bff;
-    }
-  }
-}
-
-.active a {
-  color: #007bff;
-  font-weight: bold;
-}
-
-.footer {
-  margin-top: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-
-  a {
-    text-decoration: none;
-    color: #555;
-  }
-}
-
-.linkItem,
-.active {
-  a {
+  width: 15%;
+  .logo {
     display: flex;
     align-items: center;
-    gap: 8px;
-    color: #333;
-    text-decoration: none;
-    padding: 8px 0;
+    justify-content: center;
+    font-size: clamp(1rem, 0.3838rem + 1.9718vw, 2.75rem);
+    font-weight: bold;
+    color: #007bff;
+    text-align: center;
+    border-right: 1px solid rgba(203, 213, 225, 1);
+    border-bottom: 1px solid rgba(203, 213, 225, 1);
+    height: 11.1%;
   }
-}
+  .nav {
+    width: 100%;
+    background-color: #f9fbfc;
+    height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid rgba(203, 213, 225, 1);
+    gap: 40px;
+    align-items: center;
+  }
 
-.active a {
-  color: #007bff;
-  font-weight: bold;
+  .menuList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+  }
+
+  .linkItem {
+    a {
+      color: #333;
+      text-decoration: none;
+      transition: 0.3s;
+
+      &:hover {
+        color: #007bff;
+      }
+    }
+  }
+
+  .active a {
+    color: #007bff;
+    font-weight: bold;
+  }
+
+  .footer {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    a {
+      text-decoration: none;
+      color: #555;
+    }
+  }
+
+  .linkItem,
+  .active {
+    a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #333;
+      text-decoration: none;
+      padding: 8px 0;
+    }
+  }
+
+  .active a {
+    color: #007bff;
+    font-weight: bold;
+  }
 }
