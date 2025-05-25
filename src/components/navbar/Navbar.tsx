@@ -32,8 +32,8 @@ const Navbar = () => {
             </Link>
           </li>
           <li className={linkClass("/doctorRecords")}>
-            <Link href="/doctorRecords">
-              <User size={18} /> <span>Записи врачей</span>
+            <Link href="/doctors">
+              <User size={18} /> <span>Список врачей</span>
             </Link>
           </li>
           <li className={linkClass("/calendar")}>

@@ -9,7 +9,7 @@ const AddDoctor = () => {
           <h1>Добавить врача</h1>
           <form>
             <div className={style.form__group}>
-              <label htmlFor="name">Имя врача</label>
+              <label htmlFor="name">ФИО</label>
               <input type="text" id="name" placeholder="Введите имя врача" />
             </div>
             <div className={style.form__group}>
@@ -21,15 +21,23 @@ const AddDoctor = () => {
               </select>
             </div>
             <div className={style.form__group}>
-              <label htmlFor="room">Кабинет</label>
+              <label htmlFor="department">Должность</label>
+              <select id="department">
+                <option value="cardiology">Кардиология</option>
+                <option value="neurology">Неврология</option>
+                <option value="pediatrics">Педиатрия</option>
+              </select>
+            </div>
+            <div className={style.form__group}>
+              <label htmlFor="phone">Контакты</label>
               <input
-                type="text"
-                id="room"
-                placeholder="Введите номер кабинета"
+                type="tel"
+                id="phone"
+                placeholder="Введите телефон врача"
               />
             </div>
             <div className={style.form__group}>
-              <label htmlFor="phone">Телефон</label>
+              <label htmlFor="phone">Эл почта</label>
               <input
                 type="tel"
                 id="phone"
