@@ -1,10 +1,10 @@
-import SigninPage from "@/components/AdminDashboard/signinPage/SigninPage";
+import AddDoctor from "@/components/pages/AddDoctor";
 import React from "react";
 
 const page = () => {
   return (
     <div>
-      <SigninPage />
+      <AddDoctor />
     </div>
   );
 };

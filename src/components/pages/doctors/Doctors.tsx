@@ -1,3 +1,4 @@
+'use client';
 import React from "react";
 import { useRouter } from "next/navigation";
 import { IoIosArrowBack, IoIosMore } from "react-icons/io";
@@ -6,9 +7,8 @@ import { CiSearch } from "react-icons/ci";
 
 const Doctors = () => {
   const router = useRouter();
-
   const handleAddDoctor = () => {
-    router.push("/AddDoctor");
+    router.push("/add-doctor");
   };
 
   return (

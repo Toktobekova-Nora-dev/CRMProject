@@ -1,5 +1,5 @@
-import React from 'react';
-import style from './AddDoctor.module.scss';
+import React from "react";
+import style from "./AddDoctor.module.scss";
 
 const AddDoctor = () => {
   return (
@@ -22,11 +22,19 @@ const AddDoctor = () => {
             </div>
             <div className={style.form__group}>
               <label htmlFor="room">Кабинет</label>
-              <input type="text" id="room" placeholder="Введите номер кабинета" />
+              <input
+                type="text"
+                id="room"
+                placeholder="Введите номер кабинета"
+              />
             </div>
             <div className={style.form__group}>
               <label htmlFor="phone">Телефон</label>
-              <input type="tel" id="phone" placeholder="Введите телефон врача" />
+              <input
+                type="tel"
+                id="phone"
+                placeholder="Введите телефон врача"
+              />
             </div>
             <button type="submit">Добавить врача</button>
           </form>
