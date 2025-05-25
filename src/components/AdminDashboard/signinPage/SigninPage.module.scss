@@ -1,0 +1,107 @@
+.content {
+  display: flex;
+  min-height: 100vh;
+  font-family: sans-serif;
+
+  .left {
+    flex: 1;
+    background: url("../../../../public/img/Frame\ 1171275422.png") no-repeat;
+    color: white;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    h1 {
+      font-size: clamp(1rem, -0.1806rem + 3.7778vw, 3.125rem);
+      font-weight: 700;
+    }
+
+    p {
+      font-size: clamp(0.625rem, 0.2778rem + 1.1111vw, 1.25rem);
+      margin: 20px 0 40px;
+      line-height: 1.5;
+    }
+
+    .leftButton {
+      background-color: rgb(255, 255, 255);
+      color: #1e77ff;
+      border: none;
+      padding: 12px 70px;
+      font-size: 16px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background 0.3s;
+
+      &:hover {
+        background-color: #e2e2e2;
+      }
+    }
+  }
+
+  .right {
+    flex: 1;
+    padding: 80px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    h2 {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      label {
+        font-size: 14px;
+        color: #555;
+        display: flex;
+        flex-direction: column;
+
+        .inputGroup {
+          display: flex;
+          align-items: center;
+          background: #f1f1f1;
+          border-radius: 8px;
+          padding: 10px;
+
+          svg {
+            margin-right: 8px;
+            color: #999;
+          }
+
+          input {
+            border: none;
+            background: transparent;
+            flex: 1;
+            font-size: 14px;
+            outline: none;
+          }
+        }
+      }
+
+      .rightButton {
+        margin-top: 20px;
+        background-color: #1e77ff;
+        color: white;
+        border: none;
+        padding: 12px;
+        border-radius: 25px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s;
+
+        &:hover {
+          background-color: #145bcc;
+        }
+      }
+    }
+  }
+}

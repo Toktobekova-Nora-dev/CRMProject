@@ -1,0 +1,28 @@
+.content {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  margin-top: 230px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  h1 {
+    font-size: clamp(1.25rem, -1.1806rem + 7.7778vw, 5.625rem);
+    color: #267cdc;
+  }
+  p {
+    color: #6e6e6e;
+    font-size: clamp(0.8125rem, -0.125rem + 3vw, 2.5rem);
+    margin-bottom: 40px;
+  }
+  .button {
+    width: 40%;
+    height: 55px;
+    color: white;
+    background-color: #267cdc;
+    border-radius: 30px;
+    font-size: large;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
