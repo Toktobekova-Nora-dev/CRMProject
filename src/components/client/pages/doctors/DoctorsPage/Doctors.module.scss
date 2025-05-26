@@ -173,13 +173,15 @@
       display: flex;
       cursor: pointer;
       gap: 8px;
+      color: #c94545;
       .deleteIcon {
-        color: #8d8d8d;
+        color: #c94545;
       }
     }
     .edit:hover,
     .delete:hover {
-      background: rgb(157, 189, 157);
+      transition: 0.6s;
+      transform: scale(1.2);
     }
   }
 }
