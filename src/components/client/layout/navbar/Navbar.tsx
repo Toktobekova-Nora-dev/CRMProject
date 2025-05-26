@@ -31,11 +31,6 @@ const Navbar = () => {
               <User size={18} /> <span>Записи врачей</span>
             </Link>
           </li>
-          <li className={linkClass("/doctorRecords")}>
-            <Link href="/doctors">
-              <User size={18} /> <span>Список врачей</span>
-            </Link>
-          </li>
           <li className={linkClass("/calendar")}>
             <Link href="/calendar">
               <CalendarDays size={18} /> <span>Управление календарем</span>
@@ -55,5 +50,4 @@ const Navbar = () => {
     </div>
   );
 };
-
 export default Navbar;
