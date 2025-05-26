@@ -6,11 +6,17 @@ const AddDoctor = () => {
     <section className={style.addDoctor}>
       <div className="container">
         <div className={style.addDoctor__form}>
+          <div className={style.addDoctor__title}>
           <h1>Добавить врача</h1>
-          <form>
+            </div>
+          <div className={style.form}>
             <div className={style.form__group}>
               <label htmlFor="name">ФИО</label>
               <input type="text" id="name" placeholder="Введите имя врача" />
+            </div>
+             <div className={style.form__group}>
+              <label htmlFor="name">Фото</label>
+              <input type="file" id="name" placeholder="Введите имя врача" />
             </div>
             <div className={style.form__group}>
               <label htmlFor="department">Отделение</label>
@@ -45,7 +51,7 @@ const AddDoctor = () => {
               />
             </div>
             <button type="submit">Добавить врача</button>
-          </form>
+          </div>
         </div>
       </div>
     </section>
