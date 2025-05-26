@@ -120,3 +120,23 @@
     cursor: pointer;
   }
 }
+
+.more {
+  position: relative;
+  .moreIcon {
+    font-size: 24px;
+    cursor: pointer;
+  }
+  .actions {
+    display: flex;
+    display: none;
+
+    flex-direction: column;
+    .edit {
+      display: flex;
+    }
+    .delete {
+      display: flex;
+    }
+  }
+}

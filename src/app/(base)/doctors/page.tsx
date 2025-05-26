@@ -1,12 +1,6 @@
-import ListOfDoctors from "@/components/pages/ListOfDoctors/ListOfDoctors";
+import Doctors from "@/components/pages/doctors/Doctors";
 import React from "react";
 
-const page = () => {
-  return (
-    <div>
-      <ListOfDoctors />
-    </div>
-  );
-};
+const page = () => <Doctors />;
 
 export default page;

@@ -2,13 +2,40 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
 }
 
 .addDoctor__form {
-  width: 80%;
+  width: 60%;
   margin: 0 auto;
-  padding: 20px;
   border-radius: 10px;
-  border: 1px solid #f9f9f9;
+  border: 1px solid #e1e1e1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 50px;
+}
+
+.form__group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  label {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24.49px;
+    color: #8b8b8b;
+  }
+  input {
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #0f172a;
+    background: #f6f6f6;
+    width: 80%;
+    &:focus {
+      outline: none;
+      border-color: #007bff;
+    }
+  }
 }
