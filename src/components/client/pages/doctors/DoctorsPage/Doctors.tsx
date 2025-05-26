@@ -1,14 +1,184 @@
-'use client';
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { IoIosArrowBack, IoIosMore } from "react-icons/io";
-import styles from "./Doctors.module.scss";
 import { CiSearch } from "react-icons/ci";
+import { Pencil, Trash2 } from "lucide-react";
+import styles from "./Doctors.module.scss";
+import "./Doctors.module.scss";
+
+const doctorsList = [
+  {
+    id: 1,
+    name: "Елена Ивановна",
+    room: "№ 1",
+    department: "Кардиология",
+    phone: "0700081882",
+  },
+  {
+    id: 2,
+    name: "Елена Ивановна",
+    room: "№ 2",
+    department: "Кардиология",
+    phone: "0700081882",
+  },
+  {
+    id: 3,
+    name: "Елена Ивановна",
+    room: "№ 9",
+    department: "Кардиология",
+    phone: "0700081882",
+  },
+  {
+    id: 3,
+    name: "Елена Ивановна",
+    room: "№ 9",
+    department: "Кардиология",
+    phone: "0700081882",
+  },
+  {
+    id: 3,
+    name: "Елена Ивановна",
+    room: "№ 9",
+    department: "Кардиология",
+    phone: "0700081882",
+  },
+  {
+    id: 3,
+    name: "Елена Ивановна",
+    room: "№ 9",
+    department: "Кардиология",
+    phone: "0700081882",
+  },
+  {
+    id: 3,
+    name: "Елена Ивановна",
+    room: "№ 9",
+    department: "Кардиология",
+    phone: "0700081882",
+  },
+  {
+    id: 3,
+    name: "Елена Ивановна",
+    room: "№ 9",
+    department: "Кардиология",
+    phone: "0700081882",
+  },
+  {
+    id: 3,
+    name: "Елена Ивановна",
+    room: "№ 9",
+    department: "Кардиология",
+    phone: "0700081882",
+  },
+  {
+    id: 3,
+    name: "Елена Ивановна",
+    room: "№ 9",
+    department: "Кардиология",
+    phone: "0700081882",
+  },
+  {
+    id: 3,
+    name: "Елена Ивановна",
+    room: "№ 9",
+    department: "Кардиология",
+    phone: "0700081882",
+  },
+  {
+    id: 3,
+    name: "Елена Ивановна",
+    room: "№ 9",
+    department: "Кардиология",
+    phone: "0700081882",
+  },
+  {
+    id: 3,
+    name: "Елена Ивановна",
+    room: "№ 9",
+    department: "Кардиология",
+    phone: "0700081882",
+  },
+  {
+    id: 3,
+    name: "Елена Ивановна",
+    room: "№ 9",
+    department: "Кардиология",
+    phone: "0700081882",
+  },
+  {
+    id: 3,
+    name: "Елена Ивановна",
+    room: "№ 9",
+    department: "Кардиология",
+    phone: "0700081882",
+  },
+  {
+    id: 3,
+    name: "Елена Ивановна",
+    room: "№ 9",
+    department: "Кардиология",
+    phone: "0700081882",
+  },
+  {
+    id: 3,
+    name: "Елена Ивановна",
+    room: "№ 9",
+    department: "Кардиология",
+    phone: "0700081882",
+  },
+  {
+    id: 3,
+    name: "Елена Ивановна",
+    room: "№ 9",
+    department: "Кардиология",
+    phone: "0700081882",
+  },
+  {
+    id: 3,
+    name: "Елена Ивановна",
+    room: "№ 9",
+    department: "Кардиология",
+    phone: "0700081882",
+  },
+  {
+    id: 3,
+    name: "Елена Ивановна",
+    room: "№ 9",
+    department: "Кардиология",
+    phone: "0700081882",
+  },
+  {
+    id: 3,
+    name: "Елена Ивановна",
+    room: "№ 9",
+    department: "Кардиология",
+    phone: "0700081882",
+  },
+  {
+    id: 3,
+    name: "Елена Ивановна",
+    room: "№ 9",
+    department: "Кардиология",
+    phone: "0700081882",
+  },
+  {
+    id: 3,
+    name: "Елена Ивановна",
+    room: "№ 9",
+    department: "Кардиология",
+    phone: "0700081882",
+  },
+];
 
 const Doctors = () => {
   const router = useRouter();
-  const handleAddDoctor = () => {
-    router.push("/add-doctor");
+  const [activeId, setActiveId] = useState<number | null>(null);
+
+  const handleAddDoctor = () => router.push("/doctors/add-doctor");
+
+  const handleToggleMenu = (id: number) => {
+    setActiveId((prevId) => (prevId === id ? null : id));
   };
 
   return (
@@ -34,194 +204,41 @@ const Doctors = () => {
         </div>
         <hr />
         <div className={styles.doctor__list}>
-          <div className={styles.list__item}>
-            <h3>
-              Специалист: <span>Елена Ивановна</span>
-            </h3>
-            <h3>
-              Кабинет: <span>№ 9</span>
-            </h3>
-            <h3>
-              Отделение: <span>Кардиология</span>
-            </h3>
-            <h3>
-              Телефон: <span>0700081882</span>
-            </h3>
-            <a>
-              <IoIosMore />
-            </a>
-          </div>
-          <div className={styles.list__item}>
-            <h3>
-              Специалист: <span>Елена Ивановна</span>
-            </h3>
-            <h3>
-              Кабинет: <span>№ 9</span>
-            </h3>
-            <h3>
-              Отделение: <span>Кардиология</span>
-            </h3>
-            <h3>
-              Телефон: <span>0700081882</span>
-            </h3>
-            <IoIosMore />
-          </div>
-          <div className={styles.list__item}>
-            <h3>
-              Специалист: <span>Елена Ивановна</span>
-            </h3>
-            <h3>
-              Кабинет: <span>№ 9</span>
-            </h3>
-            <h3>
-              Отделение: <span>Кардиология</span>
-            </h3>
-            <h3>
-              Телефон: <span>0700081882</span>
-            </h3>
-            <IoIosMore />
-          </div>
-          <div className={styles.list__item}>
-            <h3>
-              Специалист: <span>Елена Ивановна</span>
-            </h3>
-            <h3>
-              Кабинет: <span>№ 9</span>
-            </h3>
-            <h3>
-              Отделение: <span>Кардиология</span>
-            </h3>
-            <h3>
-              Телефон: <span>0700081882</span>
-            </h3>
-            <a>
-              <IoIosMore />
-            </a>
-          </div>
-          <div className={styles.list__item}>
-            <h3>
-              Специалист: <span>Елена Ивановна</span>
-            </h3>
-            <h3>
-              Кабинет: <span>№ 9</span>
-            </h3>
-            <h3>
-              Отделение: <span>Кардиология</span>
-            </h3>
-            <h3>
-              Телефон: <span>0700081882</span>
-            </h3>
-            <IoIosMore />
-          </div>
-          <div className={styles.list__item}>
-            <h3>
-              Специалист: <span>Елена Ивановна</span>
-            </h3>
-            <h3>
-              Кабинет: <span>№ 9</span>
-            </h3>
-            <h3>
-              Отделение: <span>Кардиология</span>
-            </h3>
-            <h3>
-              Телефон: <span>0700081882</span>
-            </h3>
-            <IoIosMore />
-          </div>
-          <div className={styles.list__item}>
-            <h3>
-              Специалист: <span>Елена Ивановна</span>
-            </h3>
-            <h3>
-              Кабинет: <span>№ 9</span>
-            </h3>
-            <h3>
-              Отделение: <span>Кардиология</span>
-            </h3>
-            <h3>
-              Телефон: <span>0700081882</span>
-            </h3>
-            <a>
-              <IoIosMore />
-            </a>
-          </div>
-          <div className={styles.list__item}>
-            <h3>
-              Специалист: <span>Елена Ивановна</span>
-            </h3>
-            <h3>
-              Кабинет: <span>№ 9</span>
-            </h3>
-            <h3>
-              Отделение: <span>Кардиология</span>
-            </h3>
-            <h3>
-              Телефон: <span>0700081882</span>
-            </h3>
-            <IoIosMore />
-          </div>
-          <div className={styles.list__item}>
-            <h3>
-              Специалист: <span>Елена Ивановна</span>
-            </h3>
-            <h3>
-              Кабинет: <span>№ 9</span>
-            </h3>
-            <h3>
-              Отделение: <span>Кардиология</span>
-            </h3>
-            <h3>
-              Телефон: <span>0700081882</span>
-            </h3>
-            <IoIosMore />
-          </div>
-          <div className={styles.list__item}>
-            <h3>
-              Специалист: <span>Елена Ивановна</span>
-            </h3>
-            <h3>
-              Кабинет: <span>№ 9</span>
-            </h3>
-            <h3>
-              Отделение: <span>Кардиология</span>
-            </h3>
-            <h3>
-              Телефон: <span>0700081882</span>
-            </h3>
-            <a>
-              <IoIosMore />
-            </a>
-          </div>
-          <div className={styles.list__item}>
-            <h3>
-              Специалист: <span>Елена Ивановна</span>
-            </h3>
-            <h3>
-              Кабинет: <span>№ 9</span>
-            </h3>
-            <h3>
-              Отделение: <span>Кардиология</span>
-            </h3>
-            <h3>
-              Телефон: <span>0700081882</span>
-            </h3>
-            <IoIosMore />
-          </div>
-          <div className={styles.list__item}>
-            <h3>
-              Специалист: <span>Елена Ивановна</span>
-            </h3>
-            <h3>
-              Кабинет: <span>№ 9</span>
-            </h3>
-            <h3>
-              Отделение: <span>Кардиология</span>
-            </h3>
-            <h3>
-              Телефон: <span>0700081882</span>
-            </h3>
-            <IoIosMore />
-          </div>
+          {doctorsList.map((doctor) => (
+            <div key={doctor.id} className={styles.list__item}>
+              <h3>
+                Специалист: <span>{doctor.name}</span>
+              </h3>
+              <h3>
+                Кабинет: <span>{doctor.room}</span>
+              </h3>
+              <h3>
+                Отделение: <span>{doctor.department}</span>
+              </h3>
+              <h3>
+                Телефон: <span>{doctor.phone}</span>
+              </h3>
+              <div className={styles.more}>
+                <IoIosMore
+                  onClick={() => handleToggleMenu(doctor.id)}
+                  className={styles.moreIcon}
+                />
+                <div
+                  className={styles.actions}
+                  style={{ display: activeId === doctor.id ? "flex" : "none" }}
+                >
+                  <div className={styles.edit}>
+                    <Pencil className={styles.editIcon} />
+                    <span>Редактировать</span>
+                  </div>
+                  <div className={styles.delete}>
+                    <Trash2 className={styles.deleteIcon} />
+                    <span>Удалить врача</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

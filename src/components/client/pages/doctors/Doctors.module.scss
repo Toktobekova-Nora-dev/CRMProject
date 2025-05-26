@@ -85,33 +85,17 @@
 
 .doctor__list {
   margin-top: 20px;
-  padding-right: 40px;
+  padding-right: 10px;
   height: 75vh;
   overflow-y: scroll;
+  scrollbar-color: rgba(75, 156, 251, 1) rgba(217, 217, 217, 1);
+  padding-right: 40px;
   width: 100%;
-
-  &::-webkit-scrollbar {
-    width: 15px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: #d9d9d9;
-    border-radius: 16px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: #4b9cfb;
-    min-height: 10px;
-    border: 1px solid #d9d9d9;
-    border-radius: 16px;
-  }
-
-  &::-webkit-scrollbar-button {
-    height: 0px;
-    width: 0px;
-  }
 }
 
+.doctor__list::-webkit-scrollbar-thumb {
+  background: cornflowerblue;
+}
 .list__item {
   display: flex;
   align-items: center;
@@ -158,13 +142,14 @@
     padding: 26px 30px;
     border-radius: 12px;
     box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.06);
+
     box-shadow: -1px 1px 22.3px 5px rgba(0, 0, 0, 0.07);
     gap: 20px;
     z-index: 99;
     .edit {
       display: flex;
       cursor: pointer;
-      gap: 8px;
+      gap: 5px;
       .editIcon {
         color: #8d8d8d;
       }
@@ -172,16 +157,11 @@
     .delete {
       display: flex;
       cursor: pointer;
-      gap: 8px;
-      color: #c94545;
+
+      gap: 5px;
       .deleteIcon {
-        color: #c94545;
+        color: #8d8d8d;
       }
-    }
-    .edit:hover,
-    .delete:hover {
-      transition: 0.6s;
-      transform: scale(1.2);
     }
   }
 }

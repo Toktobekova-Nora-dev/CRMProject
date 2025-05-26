@@ -1,6 +1,7 @@
 .layout {
   display: flex;
   height: 100vh;
+  background: rgba(252, 252, 252, 1);
 }
 
 .right {
@@ -10,11 +11,10 @@
 }
 
 .main {
+  border: 1px solid rgba(203, 213, 225, 1);
   flex: 1;
   margin: 40px 30px;
   overflow-y: auto;
   padding: 20px;
-  background: #ffffff;
-  border: 1px solid rgba(203, 213, 225, 1);
   border-radius: 20px;
 }
