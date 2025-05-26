@@ -1,4 +1,4 @@
-import Layout from "../../components/layout/Layout";
+import Layout from "@/components/client/layout/Layout";
 import React, { FC, ReactNode } from "react";
 
 interface ILayout {

@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { FiMail, FiLock } from "react-icons/fi";
 import scss from "./SigninPage.module.scss";
@@ -12,8 +13,8 @@ const SigninPage = () => {
           Войдите в систему, чтобы управлять записями, <br />
           пациентами и процессами клиники легко и удобно.
         </p>
-        <Link href={"/admin/signUp"}>
-          <button className={scss.leftButton}>ВОЙТИ</button>
+        <Link className={scss.leftButton} href={"/admin/signUp"}>
+          ВОЙТИ
         </Link>
       </div>
       <div className={scss.right}>

@@ -1,4 +1,4 @@
-import Calendar from "@/components/pages/calendar/Calendar";
+import { Calendar } from "lucide-react";
 import React from "react";
 
 const page = () => {

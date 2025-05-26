@@ -1,4 +1,4 @@
-import AddDoctor from "@/components/pages/addDoctor/AddDoctor";
+import AddDoctor from "@/components/client/pages/addDoctor/AddDoctor";
 import React from "react";
 
 const page = () => {

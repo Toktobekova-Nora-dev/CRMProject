@@ -1,4 +1,4 @@
-import SigninPage from "@/components/AdminDashboard/signinPage/SigninPage";
+import SigninPage from "@/components/admin/pages/signinPage/SigninPage";
 import React from "react";
 
 const page = () => {
