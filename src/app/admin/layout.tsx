@@ -1,4 +1,4 @@
-import AdminLayout from "@/components/AdminDashboard/AdminLayout";
+import AdminLayout from "@/components/admin/layout/AdminLayout";
 import React, { FC, ReactNode } from "react";
 
 interface ILayout {
