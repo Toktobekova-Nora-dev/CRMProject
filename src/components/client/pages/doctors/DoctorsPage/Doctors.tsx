@@ -5,7 +5,6 @@ import { IoIosArrowBack, IoIosMore } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 import { Pencil, Trash2 } from "lucide-react";
 import styles from "./Doctors.module.scss";
-import "./Doctors.module.scss";
 
 const doctorsList = [
   {
@@ -84,7 +83,7 @@ const Doctors = () => {
   const router = useRouter();
   const [activeId, setActiveId] = useState<number | null>(null);
 
-  const handleAddDoctor = () => router.push("/doctors/add-doctor");
+  const handleAddDoctor = () => router.push("/addDoctor");
 
   const handleToggleMenu = (id: number) => {
     setActiveId((prevId) => (prevId === id ? null : id));
