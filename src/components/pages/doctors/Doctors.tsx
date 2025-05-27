@@ -1,15 +1,21 @@
-'use client';
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { IoIosArrowBack, IoIosMore } from "react-icons/io";
 import styles from "./Doctors.module.scss";
 import { CiSearch } from "react-icons/ci";
+import { Pencil, Trash2 } from "lucide-react";
 
 const Doctors = () => {
+  const [click, setClick] = useState(false);
   const router = useRouter();
   const handleAddDoctor = () => {
     router.push("/add-doctor");
   };
+
+  function handleClick() {
+    setClick((prevClick) => !prevClick);
+  }
 
   return (
     <section className={styles.doctors}>
@@ -47,9 +53,83 @@ const Doctors = () => {
             <h3>
               Телефон: <span>0700081882</span>
             </h3>
-            <a>
-              <IoIosMore />
-            </a>
+            <div className={styles.more}>
+              <IoIosMore onClick={handleClick} className={styles.moreIcon} />
+              <div
+                className={styles.actions}
+                style={click ? { opacity: 1 } : { opacity: 0 }}
+              >
+                <div className={styles.edit}>
+                  <Pencil className={styles.editIcon} />
+                  <span>Редактировать</span>
+                </div>
+                <div className={styles.delete}>
+                  <Trash2 />
+                  <span>Удалить врача</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className={styles.list__item}>
+            <h3>
+              Специалист: <span>Елена Ивановна</span>
+            </h3>
+            <h3>
+              Кабинет: <span>№ 1</span>
+            </h3>
+            <h3>
+              Отделение: <span>Кардиология</span>
+            </h3>
+            <h3>
+              Телефон: <span>0700081882</span>
+            </h3>
+            <div className={styles.more}>
+              <IoIosMore onClick={handleClick} className={styles.moreIcon} />
+
+              <div
+                className={styles.actions}
+                style={click ? { opacity: 1 } : { opacity: 0 }}
+              >
+                <div className={styles.edit}>
+                  <Pencil className={styles.editIcon} />
+                  <span>Редактировать</span>
+                </div>
+                <div className={styles.delete}>
+                  <Trash2 />
+                  <span>Удалить врача</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className={styles.list__item}>
+            <h3>
+              Специалист: <span>Елена Ивановна</span>
+            </h3>
+            <h3>
+              Кабинет: <span>№ 2</span>
+            </h3>
+            <h3>
+              Отделение: <span>Кардиология</span>
+            </h3>
+            <h3>
+              Телефон: <span>0700081882</span>
+            </h3>
+            <div className={styles.more}>
+              <IoIosMore onClick={handleClick} className={styles.moreIcon} />
+              <div
+                className={styles.actions}
+                style={click ? { opacity: 1 } : { opacity: 0 }}
+              >
+                <div className={styles.edit}>
+                  <Pencil className={styles.editIcon} />
+                  <span>Редактировать</span>
+                </div>
+                <div className={styles.delete}>
+                  <Trash2 />
+                  <span>Удалить врача</span>
+                </div>
+              </div>
+            </div>
           </div>
           <div className={styles.list__item}>
             <h3>
@@ -64,7 +144,22 @@ const Doctors = () => {
             <h3>
               Телефон: <span>0700081882</span>
             </h3>
-            <IoIosMore />
+            <div className={styles.more}>
+              <IoIosMore onClick={handleClick} className={styles.moreIcon} />
+              <div
+                className={styles.actions}
+                style={click ? { opacity: 1 } : { opacity: 0 }}
+              >
+                <div className={styles.edit}>
+                  <Pencil className={styles.editIcon} />
+                  <span>Редактировать</span>
+                </div>
+                <div className={styles.delete}>
+                  <Trash2 />
+                  <span>Удалить врача</span>
+                </div>
+              </div>
+            </div>
           </div>
           <div className={styles.list__item}>
             <h3>
@@ -79,7 +174,22 @@ const Doctors = () => {
             <h3>
               Телефон: <span>0700081882</span>
             </h3>
-            <IoIosMore />
+            <div className={styles.more}>
+              <IoIosMore onClick={handleClick} className={styles.moreIcon} />
+              <div
+                className={styles.actions}
+                style={click ? { opacity: 1 } : { opacity: 0 }}
+              >
+                <div className={styles.edit}>
+                  <Pencil className={styles.editIcon} />
+                  <span>Редактировать</span>
+                </div>
+                <div className={styles.delete}>
+                  <Trash2 />
+                  <span>Удалить врача</span>
+                </div>
+              </div>
+            </div>
           </div>
           <div className={styles.list__item}>
             <h3>
@@ -94,9 +204,22 @@ const Doctors = () => {
             <h3>
               Телефон: <span>0700081882</span>
             </h3>
-            <a>
-              <IoIosMore />
-            </a>
+            <div className={styles.more}>
+              <IoIosMore onClick={handleClick} className={styles.moreIcon} />
+              <div
+                className={styles.actions}
+                style={click ? { opacity: 1 } : { opacity: 0 }}
+              >
+                <div className={styles.edit}>
+                  <Pencil className={styles.editIcon} />
+                  <span>Редактировать</span>
+                </div>
+                <div className={styles.delete}>
+                  <Trash2 />
+                  <span>Удалить врача</span>
+                </div>
+              </div>
+            </div>
           </div>
           <div className={styles.list__item}>
             <h3>
@@ -111,7 +234,22 @@ const Doctors = () => {
             <h3>
               Телефон: <span>0700081882</span>
             </h3>
-            <IoIosMore />
+            <div className={styles.more}>
+              <IoIosMore onClick={handleClick} className={styles.moreIcon} />
+              <div
+                className={styles.actions}
+                style={click ? { opacity: 1 } : { opacity: 0 }}
+              >
+                <div className={styles.edit}>
+                  <Pencil className={styles.editIcon} />
+                  <span>Редактировать</span>
+                </div>
+                <div className={styles.delete}>
+                  <Trash2 />
+                  <span>Удалить врача</span>
+                </div>
+              </div>
+            </div>
           </div>
           <div className={styles.list__item}>
             <h3>
@@ -126,7 +264,22 @@ const Doctors = () => {
             <h3>
               Телефон: <span>0700081882</span>
             </h3>
-            <IoIosMore />
+            <div className={styles.more}>
+              <IoIosMore onClick={handleClick} className={styles.moreIcon} />
+              <div
+                className={styles.actions}
+                style={click ? { opacity: 1 } : { opacity: 0 }}
+              >
+                <div className={styles.edit}>
+                  <Pencil className={styles.editIcon} />
+                  <span>Редактировать</span>
+                </div>
+                <div className={styles.delete}>
+                  <Trash2 />
+                  <span>Удалить врача</span>
+                </div>
+              </div>
+            </div>
           </div>
           <div className={styles.list__item}>
             <h3>
@@ -141,9 +294,22 @@ const Doctors = () => {
             <h3>
               Телефон: <span>0700081882</span>
             </h3>
-            <a>
-              <IoIosMore />
-            </a>
+            <div className={styles.more}>
+              <IoIosMore onClick={handleClick} className={styles.moreIcon} />
+              <div
+                className={styles.actions}
+                style={click ? { opacity: 1 } : { opacity: 0 }}
+              >
+                <div className={styles.edit}>
+                  <Pencil className={styles.editIcon} />
+                  <span>Редактировать</span>
+                </div>
+                <div className={styles.delete}>
+                  <Trash2 />
+                  <span>Удалить врача</span>
+                </div>
+              </div>
+            </div>
           </div>
           <div className={styles.list__item}>
             <h3>
@@ -158,7 +324,22 @@ const Doctors = () => {
             <h3>
               Телефон: <span>0700081882</span>
             </h3>
-            <IoIosMore />
+            <div className={styles.more}>
+              <IoIosMore onClick={handleClick} className={styles.moreIcon} />
+              <div
+                className={styles.actions}
+                style={click ? { opacity: 1 } : { opacity: 0 }}
+              >
+                <div className={styles.edit}>
+                  <Pencil className={styles.editIcon} />
+                  <span>Редактировать</span>
+                </div>
+                <div className={styles.delete}>
+                  <Trash2 />
+                  <span>Удалить врача</span>
+                </div>
+              </div>
+            </div>
           </div>
           <div className={styles.list__item}>
             <h3>
@@ -173,7 +354,22 @@ const Doctors = () => {
             <h3>
               Телефон: <span>0700081882</span>
             </h3>
-            <IoIosMore />
+            <div className={styles.more}>
+              <IoIosMore onClick={handleClick} className={styles.moreIcon} />
+              <div
+                className={styles.actions}
+                style={click ? { opacity: 1 } : { opacity: 0 }}
+              >
+                <div className={styles.edit}>
+                  <Pencil className={styles.editIcon} />
+                  <span>Редактировать</span>
+                </div>
+                <div className={styles.delete}>
+                  <Trash2 />
+                  <span>Удалить врача</span>
+                </div>
+              </div>
+            </div>
           </div>
           <div className={styles.list__item}>
             <h3>
@@ -188,39 +384,22 @@ const Doctors = () => {
             <h3>
               Телефон: <span>0700081882</span>
             </h3>
-            <a>
-              <IoIosMore />
-            </a>
-          </div>
-          <div className={styles.list__item}>
-            <h3>
-              Специалист: <span>Елена Ивановна</span>
-            </h3>
-            <h3>
-              Кабинет: <span>№ 9</span>
-            </h3>
-            <h3>
-              Отделение: <span>Кардиология</span>
-            </h3>
-            <h3>
-              Телефон: <span>0700081882</span>
-            </h3>
-            <IoIosMore />
-          </div>
-          <div className={styles.list__item}>
-            <h3>
-              Специалист: <span>Елена Ивановна</span>
-            </h3>
-            <h3>
-              Кабинет: <span>№ 9</span>
-            </h3>
-            <h3>
-              Отделение: <span>Кардиология</span>
-            </h3>
-            <h3>
-              Телефон: <span>0700081882</span>
-            </h3>
-            <IoIosMore />
+            <div className={styles.more}>
+              <IoIosMore onClick={handleClick} className={styles.moreIcon} />
+              <div
+                className={styles.actions}
+                style={click ? { opacity: 1 } : { opacity: 0 }}
+              >
+                <div className={styles.edit}>
+                  <Pencil className={styles.editIcon} />
+                  <span>Редактировать</span>
+                </div>
+                <div className={styles.delete}>
+                  <Trash2 />
+                  <span>Удалить врача</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

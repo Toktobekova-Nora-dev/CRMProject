@@ -1,6 +1,12 @@
-import Doctors from "@/components/pages/doctors/Doctors";
+import Doctors from "@/components/client/pages/doctors/DoctorsPage/Doctors";
 import React from "react";
 
-const page = () => <Doctors />;
+const page = () => {
+  return (
+    <div>
+      <Doctors />
+    </div>
+  );
+};
 
 export default page;

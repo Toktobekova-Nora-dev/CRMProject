@@ -2,7 +2,15 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./Navbar.module.scss";
-import { Home, BarChart2, User, CalendarDays, FileText } from "lucide-react";
+import {
+  Home,
+  BarChart2,
+  User,
+  CalendarDays,
+  FileText,
+  Users,
+  ClipboardList,
+} from "lucide-react";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -28,12 +36,12 @@ const Navbar = () => {
           </li>
           <li className={linkClass("/doctorRecords")}>
             <Link href="/doctorRecords">
-              <User size={18} /> <span>Записи врачей</span>
+              <ClipboardList size={18} /> <span>Записи врачей</span>
             </Link>
           </li>
-          <li className={linkClass("/doctorRecords")}>
+          <li className={linkClass("/doctors")}>
             <Link href="/doctors">
-              <User size={18} /> <span>Список врачей</span>
+              <Users size={18} /> <span>Список врачей</span>
             </Link>
           </li>
           <li className={linkClass("/calendar")}>
@@ -55,5 +63,4 @@ const Navbar = () => {
     </div>
   );
 };
-
 export default Navbar;
