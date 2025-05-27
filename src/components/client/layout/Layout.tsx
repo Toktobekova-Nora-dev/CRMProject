@@ -9,7 +9,8 @@ import { usePathname } from "next/navigation";
 const Layout = ({ children }: { children: ReactNode }) => {
   const pathname = usePathname();
 
-  const hideHeader = pathname === "/doctors" || "/doctors/addDoctor";
+  const hideHeader =
+    pathname === "/doctors" || pathname === "/doctors/addDoctor";
 
   return (
     <div className={styles.layout}>
