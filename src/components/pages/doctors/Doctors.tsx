@@ -5,12 +5,18 @@ import { IoIosArrowBack, IoIosMore } from "react-icons/io";
 import styles from "./Doctors.module.scss";
 import { CiSearch } from "react-icons/ci";
 import { Pencil, Trash2 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Doctors = () => {
   const [click, setClick] = useState(false);
   const router = useRouter();
+
   const handleAddDoctor = () => {
-    router.push("/add-doctor");
+    router.push("/addDoctor");
+  };
+
+  const handleEditDoctor = () => {
+    router.push("/editDoctor");
   };
 
   function handleClick() {
@@ -61,7 +67,7 @@ const Doctors = () => {
               >
                 <div className={styles.edit}>
                   <Pencil className={styles.editIcon} />
-                  <span>Редактировать</span>
+                  <span onClick={handleEditDoctor}>Редактировать</span>
                 </div>
                 <div className={styles.delete}>
                   <Trash2 />
@@ -92,7 +98,7 @@ const Doctors = () => {
               >
                 <div className={styles.edit}>
                   <Pencil className={styles.editIcon} />
-                  <span>Редактировать</span>
+                  <span onClick={() => {}}>Редактировать</span>
                 </div>
                 <div className={styles.delete}>
                   <Trash2 />

@@ -84,7 +84,7 @@ const Doctors = () => {
   const router = useRouter();
   const [activeId, setActiveId] = useState<number | null>(null);
 
-  const handleAddDoctor = () => router.push("/doctors/add-doctor");
+  const handleAddDoctor = () => router.push("/doctors/addDoctor");
 
   const handleToggleMenu = (id: number) => {
     setActiveId((prevId) => (prevId === id ? null : id));
