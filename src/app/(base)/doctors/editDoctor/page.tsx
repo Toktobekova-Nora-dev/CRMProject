@@ -1,4 +1,4 @@
-import EditDoctor from "@/components/pages/editDoctor/EditDoctor";
+import EditDoctor from "@/components/client/pages/editDoctor/EditDoctor";
 import React from "react";
 
 const page = () => {
