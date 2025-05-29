@@ -1,37 +1,85 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import style from "./AddDoctor.module.scss";
 
 const AddDoctor = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    photo: null,
+    department: "",
+    position: "",
+    phone: "",
+    email: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value, files } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: files ? files[0] : value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Submitted data:", formData);
+  };
+
   return (
     <section className={style.addDoctor}>
       <div className="container">
         <div className={style.addDoctor__form}>
-          <div className={style.addDoctor__title}>
-          <h1>Добавить врача</h1>
-            </div>
-          <div className={style.form}>
+          <h1 className={style.addDoctor__title}>Добавить врача</h1>
+          <form className={style.form} onSubmit={handleSubmit}>
             <div className={style.form__group}>
               <label htmlFor="name">ФИО</label>
-              <input type="text" id="name" placeholder="Введите имя врача" />
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Введите имя врача"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
             </div>
-             <div className={style.form__group}>
-              <label htmlFor="name">Фото</label>
-              <input type="file" id="name" placeholder="Введите имя врача" />
+            <div className={style.form__group}>
+              <label htmlFor="photo">Фото</label>
+              <input
+                type="file"
+                id="photo"
+                name="photo"
+                onChange={handleChange}
+              />
             </div>
             <div className={style.form__group}>
               <label htmlFor="department">Отделение</label>
-              <select id="department">
+              <select
+                id="department"
+                name="department"
+                value={formData.department}
+                onChange={handleChange}
+                required
+              >
+                <option value="">Выберите отделение</option>
                 <option value="cardiology">Кардиология</option>
                 <option value="neurology">Неврология</option>
                 <option value="pediatrics">Педиатрия</option>
               </select>
             </div>
             <div className={style.form__group}>
-              <label htmlFor="department">Должность</label>
-              <select id="department">
-                <option value="cardiology">Кардиология</option>
-                <option value="neurology">Неврология</option>
-                <option value="pediatrics">Педиатрия</option>
+              <label htmlFor="position">Должность</label>
+              <select
+                id="position"
+                name="position"
+                value={formData.position}
+                onChange={handleChange}
+                required
+              >
+                <option value="">Выберите должность</option>
+                <option value="head">Заведующий</option>
+                <option value="doctor">Врач</option>
+                <option value="intern">Интерн</option>
               </select>
             </div>
             <div className={style.form__group}>
@@ -39,19 +87,29 @@ const AddDoctor = () => {
               <input
                 type="tel"
                 id="phone"
+                name="phone"
                 placeholder="Введите телефон врача"
+                value={formData.phone}
+                onChange={handleChange}
+                required
               />
             </div>
             <div className={style.form__group}>
-              <label htmlFor="phone">Эл почта</label>
+              <label htmlFor="email">Эл. почта</label>
               <input
-                type="tel"
-                id="phone"
-                placeholder="Введите телефон врача"
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Введите email врача"
+                value={formData.email}
+                onChange={handleChange}
+                required
               />
             </div>
-            <button type="submit">Добавить врача</button>
-          </div>
+            <button type="submit" className={style.form__submit}>
+              Добавить врача
+            </button>
+          </form>
         </div>
       </div>
     </section>
