@@ -135,7 +135,10 @@ const Doctors = () => {
                   className={styles.actions}
                   style={{ display: activeId === doctor.id ? "flex" : "none" }}
                 >
-                  <div className={styles.edit}>
+                  <div
+                    className={styles.edit}
+                    onClick={() => router.push("/doctors/editDoctor")}
+                  >
                     <Pencil className={styles.editIcon} />
                     <span>Редактировать</span>
                   </div>

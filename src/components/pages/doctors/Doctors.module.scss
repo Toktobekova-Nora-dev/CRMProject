@@ -2,9 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid rgba(203, 213, 225, 1);
-  padding: 20px 0px;
-  border-radius: 20px;
 }
 
 .head_doctor {
@@ -88,31 +85,10 @@
 
 .doctor__list {
   margin-top: 20px;
-  padding-right: 40px;
-  height: 75vh;
+  height: 500px;
   overflow-y: scroll;
+  padding-right: 10px;
   width: 100%;
-
-  &::-webkit-scrollbar {
-    width: 15px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: #d9d9d9;
-    border-radius: 16px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: #4b9cfb;
-    min-height: 10px;
-    border: 1px solid #d9d9d9;
-    border-radius: 16px;
-  }
-
-  &::-webkit-scrollbar-button {
-    height: 0px;
-    width: 0px;
-  }
 }
 
 .list__item {
@@ -121,14 +97,15 @@
   justify-content: space-between;
   padding: 10px;
   width: 100%;
-  height: 85px;
+  height: 60px;
   background: #fff;
   border-radius: 10px;
   transition: all 0.3s ease-in-out;
   padding: 0 20px;
   margin-top: 10px;
-  box-shadow: 0px 10px 2px 0px #f6f7fa;
-
+  -webkit-box-shadow: 0px 7px 8px 0px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 0px 7px 8px 0px rgba(34, 60, 80, 0.2);
+  box-shadow: 0px 4px 5px 0px rgba(34, 60, 80, 0.2);
   h3 {
     font-weight: 500;
     font-size: 18px;
@@ -144,47 +121,5 @@
   a {
     font-size: 20px;
     cursor: pointer;
-  }
-}
-
-.more {
-  position: relative;
-  .moreIcon {
-    font-size: 24px;
-    cursor: pointer;
-  }
-  .actions {
-    background-color: white;
-    position: absolute;
-    right: 0;
-    flex-direction: column;
-    padding: 26px 30px;
-    border-radius: 12px;
-    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.06);
-    box-shadow: -1px 1px 22.3px 5px rgba(0, 0, 0, 0.07);
-    gap: 20px;
-    z-index: 99;
-    .edit {
-      display: flex;
-      cursor: pointer;
-      gap: 8px;
-      .editIcon {
-        color: #8d8d8d;
-      }
-    }
-    .delete {
-      display: flex;
-      cursor: pointer;
-      gap: 8px;
-      color: #c94545;
-      .deleteIcon {
-        color: #c94545;
-      }
-    }
-    .edit:hover,
-    .delete:hover {
-      transition: 0.6s;
-      transform: scale(1.2);
-    }
   }
 }
