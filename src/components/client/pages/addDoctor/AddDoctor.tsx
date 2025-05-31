@@ -50,7 +50,7 @@ const AddDoctor = () => {
                 placeholder="Введите телефон врача"
               />
             </div>
-            <button type="submit">Добавить врача</button>
+            <button className={style.submit} type="submit">Добавить врача</button>
           </div>
         </div>
       </div>

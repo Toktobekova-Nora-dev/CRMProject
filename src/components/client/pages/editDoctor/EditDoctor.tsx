@@ -33,6 +33,7 @@ const EditDoctor = () => {
 
           <label htmlFor="bonus">Введите бонус в процентах</label>
           <input id="bonus" type="number" defaultValue={10} />
+          <button className={styles.submit} type="submit">Сохранить</button>
         </div>
       </div>
     </section>
