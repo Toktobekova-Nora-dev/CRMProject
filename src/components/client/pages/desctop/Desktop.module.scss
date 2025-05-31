@@ -85,6 +85,7 @@
       border-bottom: 1px solid #eee;
       align-items: center;
       font-size: 14px;
+      position: relative;
 
       &:hover {
         background-color: #f9f9f9;
@@ -94,6 +95,32 @@
         font-size: 18px;
         cursor: pointer;
         text-align: right;
+      }
+      .editPart {
+        width: 200px;
+        height: 80px;
+        padding: 10px;
+        background-color: #fdfdfd;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid rgb(237, 232, 232);
+        gap: 10px;
+        position: absolute;
+        right: 0px;
+        top: 30px;
+        border-radius: 10px;
+        .boxer {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+        .ion_icon {
+          color: rgb(65, 63, 63);
+          font-weight: 700;
+        }
+        p:hover {
+          color: red;
+        }
       }
     }
 
