@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import scss from "./SignUpPage.module.scss";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Value } from "sass";
 
 type FormData = {
   fullName: string;

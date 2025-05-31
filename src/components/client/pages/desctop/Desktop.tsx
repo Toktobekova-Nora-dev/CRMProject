@@ -1,9 +1,32 @@
-import React from "react";
+"use client";
+import React, { useReducer, useState } from "react";
 import scss from "./Desktop.module.scss";
-import { Search } from "lucide-react";
+import { Pen, Search, Trash } from "lucide-react";
 import { IoMdAdd } from "react-icons/io";
+import { useParams, useRouter } from "next/navigation";
+
+const obj = [
+  {
+    date: "Март 20, 12:09",
+    pation: "Иванов Иван",
+    nuts: "Смирнова Елена",
+    pay: "Наличные",
+    som: "5000",
+    id: 1,
+  },
+  {
+    date: "Март 20, 12:09",
+    pation: "Иванов Иван",
+    nuts: "Смирнова Елена",
+    pay: "Наличные",
+    som: "5000",
+    id: 2,
+  },
+];
 
 const Desktop = () => {
+  const [modalId, setModalId] = useState<number | null>(null);
+  const router = useRouter();
   return (
     <div className={scss.wrapper}>
       <div className={scss.header}>
@@ -31,7 +54,6 @@ const Desktop = () => {
         </select>
       </div>
 
-      {/* Здесь будет таблица */}
       <div className={scss.table}>
         <div className={scss.tableHeader}>
           <div>Дата и время</div>
@@ -42,17 +64,38 @@ const Desktop = () => {
           <div></div>
         </div>
 
-        <div className={scss.tableRow}>
-          <div>Март 20, 12:09</div>
-          <div>Иванов Иван</div>
-          <div>Смирнова Елена</div>
-          <div>
-            <span className={scss.dot + " " + scss.green}></span>
-            Наличные
+        {obj.map((el) => (
+          <div key={el.id} className={scss.tableRow}>
+            <div>{el.date}</div>
+            <div>{el.pation}</div>
+            <div>{el.nuts}</div>
+            <div>
+              <span className={scss.dot + " " + scss.green}></span>
+              {el.pay}
+            </div>
+            <div>{el.som}</div>
+            <div
+              onClick={() => setModalId(modalId === el.id ? null : el.id)}
+              className={scss.more}
+            >
+              ⋮
+            </div>
+            {modalId === el.id && (
+              <div style={{ display: "flex" }} className={scss.editPart}>
+                <div className={scss.boxer}>
+                  <Pen className={scss.ion_icon} />
+                  <p onClick={() => router.push(`/detail/${el.id}`)}>
+                    Редактировать
+                  </p>
+                </div>
+                <div className={scss.boxer}>
+                  <Trash className={scss.ion_icon} />
+                  <p>Удалить пациента</p>
+                </div>
+              </div>
+            )}
           </div>
-          <div>5000с</div>
-          <div className={scss.more}>⋮</div>
-        </div>
+        ))}
       </div>
     </div>
   );
