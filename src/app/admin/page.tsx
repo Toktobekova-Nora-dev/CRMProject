@@ -7,8 +7,8 @@ const page = () => {
     <div className={scss.content}>
       <h1>Oнлайн CRM система</h1>
       <p>Для учета клиентов и сделок</p>
-      <Link className={scss.button} href="/admin/signIn">
-        <button>Войти</button>
+      <Link href="/admin/signIn" className={scss.button}>
+        Войти
       </Link>
     </div>
   );

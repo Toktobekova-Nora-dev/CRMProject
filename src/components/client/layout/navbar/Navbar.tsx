@@ -57,7 +57,7 @@ const Navbar = () => {
         </ul>
         <div className={styles.footer}>
           <Link href="/profile">Мой профиль</Link>
-          <Link href="/logout">Выйти</Link>
+          <Link href="/admin/logout">Выйти</Link>
         </div>
       </nav>
     </div>

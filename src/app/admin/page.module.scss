@@ -24,5 +24,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: clamp(1.125rem, 0.7778rem + 1.1111vw, 1.75rem);
+  }
+}
+
+@media (min-width: 768px) {
+  .content {
+    padding: 0 2rem;
   }
 }
