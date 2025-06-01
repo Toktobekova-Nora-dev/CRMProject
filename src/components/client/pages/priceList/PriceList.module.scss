@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&family=Yellowtail&display=swap");
+
+.TitleText {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.Trigger {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 12px;
+}
+
+.Chevron {
+  transition: transform 0.3s ease;
+}
+
+.Open {
+  transform: rotate(-90deg);
+}
+
+.Item {
+  box-shadow: 0px 5px 10px -5px rgba(34, 60, 80, 0.2);
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.Content {
+  padding: 16px;
+}
+
+.ContentText {
+  padding-left: 32px;
+}
+
+.subTitle {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  font-family: "Nunito", sans-serif;
+}
+
+.left h4,
+.right h4 {
+  margin: 4px 0;
+  color: #2a2a2a;
+  font-size: 20px;
+}

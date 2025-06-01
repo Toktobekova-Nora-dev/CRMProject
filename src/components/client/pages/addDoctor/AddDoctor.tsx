@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import style from "./AddDoctor.module.scss";
 
 const AddDoctor = () => {
+  const [file, setFile] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     photo: null,
@@ -12,22 +13,41 @@ const AddDoctor = () => {
     email: "",
   });
 
-  const handleChange = (e) => {
-    const { name, value, files } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: files ? files[0] : value,
-    }));
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
+    const target = e.target;
+    const { name, value } = target;
+    if (
+      target instanceof HTMLInputElement &&
+      target.type === "file" &&
+      target.files &&
+      target.files.length > 0
+    ) {
+      const file = target.files[0];
+      setFormData((prev) => ({
+        ...prev,
+        [name]: file,
+      }));
+      setFile(file.name);
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("Submitted data:", formData);
   };
 
   return (
     <section className={style.addDoctor}>
-      <div className="container">
+      <div className={style.container}>
         <div className={style.addDoctor__form}>
           <h1 className={style.addDoctor__title}>Добавить врача</h1>
           <form className={style.form} onSubmit={handleSubmit}>
@@ -45,12 +65,7 @@ const AddDoctor = () => {
             </div>
             <div className={style.form__group}>
               <label htmlFor="photo">Фото</label>
-              <input
-                type="file"
-                id="photo"
-                name="photo"
-                onChange={handleChange}
-              />
+              <input type="file" id="photo" name="photo" />
             </div>
             <div className={style.form__group}>
               <label htmlFor="department">Отделение</label>

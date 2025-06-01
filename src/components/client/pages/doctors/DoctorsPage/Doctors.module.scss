@@ -1,7 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&family=Yellowtail&display=swap");
+
 .doctors {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: "Nunito", sans-serif;
 }
 
 .head_doctor {
@@ -48,6 +51,9 @@
   align-items: center;
   gap: 15px;
   position: relative;
+  &::placeholder {
+    color: red;
+  }
   a {
     position: absolute;
     top: 10px;
@@ -84,12 +90,11 @@
 }
 
 .doctor__list {
-  margin-top: 20px;
   padding-right: 40px;
   height: 75vh;
   overflow-y: scroll;
   width: 100%;
-
+  margin-top: 10px;
   &::-webkit-scrollbar {
     width: 15px;
   }
@@ -118,7 +123,7 @@
   justify-content: space-between;
   padding: 10px;
   width: 100%;
-  height: 85px;
+  height: 65px;
   background: #fff;
   border-radius: 10px;
   transition: all 0.3s ease-in-out;
@@ -165,6 +170,7 @@
       display: flex;
       cursor: pointer;
       gap: 8px;
+      transition: 0.5s;
       .editIcon {
         color: #8d8d8d;
       }
@@ -174,14 +180,14 @@
       cursor: pointer;
       gap: 8px;
       color: #c94545;
+      transition: 0.5s;
       .deleteIcon {
         color: #c94545;
       }
     }
     .edit:hover,
     .delete:hover {
-      transition: 0.6s;
-      transform: scale(1.2);
+      transform: scale(1.1);
     }
   }
 }
