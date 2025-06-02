@@ -129,7 +129,6 @@ const AddDoctorForm: React.FC = () => {
   ): Promise<void> => {
     e.preventDefault();
 
-    // Basic validation
     if (
       !formData.fullName ||
       !formData.department ||
