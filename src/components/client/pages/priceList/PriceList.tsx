@@ -4,6 +4,7 @@ import styles from "./PriceList.module.scss";
 import { useState } from "react";
 
 const PriceList = () => {
+
   type AccordionItemProps = {
     title: string;
     children: React.ReactNode;
