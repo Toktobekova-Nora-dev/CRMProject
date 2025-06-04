@@ -1,9 +1,10 @@
 "use client";
-import React, { useReducer, useState } from "react";
+import React, { useState } from "react";
 import scss from "./Desktop.module.scss";
 import { Pen, Search, Trash } from "lucide-react";
 import { IoMdAdd } from "react-icons/io";
-import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const obj = [
   {
@@ -31,10 +32,10 @@ const Desktop = () => {
     <div className={scss.wrapper}>
       <div className={scss.header}>
         <h1>Все записи клиентов</h1>
-        <button className={scss.addButton}>
+        <Link href={"/addUsers"} className={scss.addButton}>
           <IoMdAdd size={18} />
           Добавить пациента
-        </button>
+        </Link>
       </div>
 
       <div className={scss.filters}>

@@ -1,9 +1,10 @@
-import AnalitcsPage from "@/components/client/pages/analitcs/AnalitcsPage";
+import AddUsersPage from "@/components/client/pages/addUsers/AddUsersPage";
 import React from "react";
+
 const page = () => {
   return (
     <div>
-      <AnalitcsPage />
+      <AddUsersPage />
     </div>
   );
 };
