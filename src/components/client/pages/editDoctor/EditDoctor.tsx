@@ -1,13 +1,14 @@
 import React from "react";
 import styles from "./EditDoctor.module.scss";
-import justLogo from "../../../../../public/img/Frame 1171275422.png";
+import user from "../../../../../public/user.svg";
+import Image from "next/image";
 
 const EditDoctor = () => {
   return (
     <section className={styles.editDoctor}>
       <div className={styles.container}>
         <div className={styles.editDoctorContent}>
-          <img src={justLogo} alt="logo" />
+          <Image src={user} alt="logo" width={150}/>
           <label htmlFor="doctorName">Имя врача</label>
           <input id="doctorName" type="text" defaultValue="Канатбек Аскеров" />
 
@@ -33,6 +34,7 @@ const EditDoctor = () => {
 
           <label htmlFor="bonus">Введите бонус в процентах</label>
           <input id="bonus" type="number" defaultValue={10} />
+          <button className={styles.submit} type="submit">Сохранить</button>
         </div>
       </div>
     </section>

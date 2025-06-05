@@ -342,6 +342,7 @@ const AddDoctorForm: React.FC = () => {
                 />
               )}
             </div>
+            <button className={style.submit} type="submit">Добавить врача</button>
           </div>
 
           <div className={styles.fieldGroup}>
