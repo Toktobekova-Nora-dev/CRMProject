@@ -1,94 +1,51 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { IoIosArrowBack, IoIosMore } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 import { Pencil, Trash2 } from "lucide-react";
 import styles from "./Doctors.module.scss";
-import "./Doctors.module.scss";
 
-const doctorsList = [
-  {
-    id: 1,
-    name: "Елена Ивановна",
-    room: "№ 1",
-    department: "Кардиология",
-    phone: "0700081882",
-  },
-  {
-    id: 2,
-    name: "Елена Ивановна",
-    room: "№ 2",
-    department: "Кардиология",
-    phone: "0700081882",
-  },
-  {
-    id: 3,
-    name: "Елена Ивановна",
-    room: "№ 9",
-    department: "Кардиология",
-    phone: "0700081882",
-  },
-  {
-    id: 4,
-    name: "Елена Ивановна",
-    room: "№ 9",
-    department: "Кардиология",
-    phone: "0700081882",
-  },
-  {
-    id: 5,
-    name: "Елена Ивановна",
-    room: "№ 9",
-    department: "Кардиология",
-    phone: "0700081882",
-  },
-  {
-    id: 6,
-    name: "Елена Ивановна",
-    room: "№ 9",
-    department: "Кардиология",
-    phone: "0700081882",
-  },
-  {
-    id: 7,
-    name: "Елена Ивановна",
-    room: "№ 9",
-    department: "Кардиология",
-    phone: "0700081882",
-  },
-  {
-    id: 8,
-    name: "Елена Ивановна",
-    room: "№ 9",
-    department: "Кардиология",
-    phone: "0700081882",
-  },
-  {
-    id: 9,
-    name: "Елена Ивановна",
-    room: "№ 9",
-    department: "Кардиология",
-    phone: "0700081882",
-  },
-  {
-    id: 10,
-    name: "Елена Ивановна",
-    room: "№ 9",
-    department: "Кардиология",
-    phone: "0700081882",
-  },
-];
+interface Doctor {
+  id: number;
+  first_name: string;
+  last_name: string;
+  department_name: string;
+  cabinet: string;
+  phone_number: string;
+}
 
 const Doctors = () => {
   const router = useRouter();
+  const [doctors, setDoctors] = useState<Doctor[]>([]);
   const [activeId, setActiveId] = useState<number | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   const handleAddDoctor = () => router.push("/doctors/addDoctor");
 
   const handleToggleMenu = (id: number) => {
     setActiveId((prevId) => (prevId === id ? null : id));
   };
+
+  useEffect(() => {
+    const fetchDoctors = async () => {
+      try {
+        const response = await fetch("http://13.60.242.78/ru/doctor/");
+        if (!response.ok) {
+          throw new Error("Серверден врачтар тизмеси жүктөлгөн жок");
+        }
+        const data = await response.json();
+        setDoctors(data);
+      } catch (err: any) {
+        setError(err.message || "Күтүлбөгөн ката кетти");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDoctors();
+  }, []);
 
   return (
     <section className={styles.doctors}>
@@ -106,50 +63,65 @@ const Doctors = () => {
             </a>
             <input type="text" placeholder="Поиск" />
             <select>
-              <option value="Отдел: УЗИ">Отдел: УЗИ</option>
+              <option value="">Фильтр по отделению</option>
+              {/* Динамик түрдө жүктөө кошсоң да болот */}
+              <option value="УЗИ">УЗИ</option>
+              <option value="Кардиология">Кардиология</option>
             </select>
           </div>
           <button onClick={handleAddDoctor}>Добавить нового врача</button>
         </div>
         <hr />
-        <div className={styles.doctor__list}>
-          {doctorsList.map((doctor) => (
-            <div key={doctor.id} className={styles.list__item}>
-              <h3>
-                Специалист: <span>{doctor.name}</span>
-              </h3>
-              <h3>
-                Кабинет: <span>{doctor.room}</span>
-              </h3>
-              <h3>
-                Отделение: <span>{doctor.department}</span>
-              </h3>
-              <h3>
-                Телефон: <span>{doctor.phone}</span>
-              </h3>
-              <div className={styles.more}>
-                <IoIosMore
-                  onClick={() => handleToggleMenu(doctor.id)}
-                  className={styles.moreIcon}
-                />
-                <div
-                  className={styles.actions}
-                  style={{ display: activeId === doctor.id ? "flex" : "none" }}
-                >
-                  <div className={styles.edit} onClick={() => router.push('/doctors/editDoctor')
-                  }>
-                    <Pencil className={styles.editIcon} />
-                    <span>Редактировать</span>
-                  </div>
-                  <div className={styles.delete}>
-                    <Trash2 className={styles.deleteIcon} />
-                    <span>Удалить врача</span>
+
+        {loading ? (
+          <p>Жүктөлүүдө...</p>
+        ) : error ? (
+          <p style={{ color: "red" }}>Ката: {error}</p>
+        ) : (
+          <div className={styles.doctor__list}>
+            {doctors.map((doctor) => (
+              <div key={doctor.id} className={styles.list__item}>
+                <h3>
+                  Специалист:{" "}
+                  <span>{`${doctor.last_name} ${doctor.first_name}`}</span>
+                </h3>
+                <h3>
+                  Кабинет: <span>{doctor.cabinet}</span>
+                </h3>
+                <h3>
+                  Отделение: <span>{doctor.department_name}</span>
+                </h3>
+                <h3>
+                  Телефон: <span>{doctor.phone_number}</span>
+                </h3>
+                <div className={styles.more}>
+                  <IoIosMore
+                    onClick={() => handleToggleMenu(doctor.id)}
+                    className={styles.moreIcon}
+                  />
+                  <div
+                    className={styles.actions}
+                    style={{
+                      display: activeId === doctor.id ? "flex" : "none",
+                    }}
+                  >
+                    <div
+                      className={styles.edit}
+                      onClick={() => router.push("/doctors/editDoctor")}
+                    >
+                      <Pencil className={styles.editIcon} />
+                      <span>Редактировать</span>
+                    </div>
+                    <div className={styles.delete}>
+                      <Trash2 className={styles.deleteIcon} />
+                      <span>Удалить врача</span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
