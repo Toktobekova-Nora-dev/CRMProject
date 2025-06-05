@@ -5,10 +5,11 @@ import { Paperclip } from "lucide-react";
 import axios from "axios";
 
 interface FormData {
-  fullName: string;
+  firstName: string;
+  lastName: string;
   photo: File | null;
   department: string;
-  speciality: string;
+  jobTitle: string;
   phone: string;
   email: string;
 }
@@ -18,17 +19,18 @@ interface Department {
   name: string;
 }
 
-interface Speciality {
+interface JobTitle {
   id: number;
   name: string;
 }
 
 const AddDoctorForm: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
-    fullName: "",
+    firstName: "",
+    lastName: "",
     photo: null,
     department: "",
-    speciality: "",
+    jobTitle: "",
     phone: "",
     email: "",
   });
@@ -36,15 +38,18 @@ const AddDoctorForm: React.FC = () => {
   const [photoPreview, setPhotoPreview] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [departments, setDepartments] = useState<Department[]>([]);
-  const [specialities, setSpecialities] = useState<Speciality[]>([]);
+  const [jobTitles, setJobTitles] = useState<JobTitle[]>([]);
   const [loadingOptions, setLoadingOptions] = useState(true);
+
+  // Base API URL - you can move this to environment variables
+  const API_BASE_URL = "http://13.60.242.78/ru";
 
   useEffect(() => {
     const loadOptions = async () => {
       try {
-        const [deptResponse, specResponse] = await Promise.allSettled([
-          axios.get("http://13.60.242.78/ru/departments/"),
-          axios.get("http://13.60.242.78/ru/specialities/"),
+        const [deptResponse, jobTitleResponse] = await Promise.allSettled([
+          axios.get(`${API_BASE_URL}/departments/`),
+          axios.get(`${API_BASE_URL}/job_titles/`), // Updated endpoint
         ]);
 
         if (deptResponse.status === "fulfilled") {
@@ -60,10 +65,10 @@ const AddDoctorForm: React.FC = () => {
           ]);
         }
 
-        if (specResponse.status === "fulfilled") {
-          setSpecialities(specResponse.value.data);
+        if (jobTitleResponse.status === "fulfilled") {
+          setJobTitles(jobTitleResponse.value.data);
         } else {
-          setSpecialities([
+          setJobTitles([
             { id: 1, name: "Главный врач" },
             { id: 2, name: "Старший врач" },
             { id: 3, name: "Врач" },
@@ -73,6 +78,7 @@ const AddDoctorForm: React.FC = () => {
         }
       } catch (error) {
         console.error("Error loading options:", error);
+        // Set fallback data
         setDepartments([
           { id: 1, name: "Стоматология" },
           { id: 2, name: "Кардиология" },
@@ -81,7 +87,7 @@ const AddDoctorForm: React.FC = () => {
           { id: 5, name: "Хирургия" },
           { id: 6, name: "Терапия" },
         ]);
-        setSpecialities([
+        setJobTitles([
           { id: 1, name: "Главный врач" },
           { id: 2, name: "Старший врач" },
           { id: 3, name: "Врач" },
@@ -109,6 +115,18 @@ const AddDoctorForm: React.FC = () => {
   const handlePhotoChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const file = e.target.files?.[0];
     if (file) {
+      // Validate file size (e.g., max 5MB)
+      if (file.size > 5 * 1024 * 1024) {
+        alert("Размер файла должен быть меньше 5MB");
+        return;
+      }
+
+      // Validate file type
+      if (!file.type.startsWith("image/")) {
+        alert("Пожалуйста, выберите изображение");
+        return;
+      }
+
       setFormData((prev) => ({
         ...prev,
         photo: file,
@@ -129,10 +147,12 @@ const AddDoctorForm: React.FC = () => {
   ): Promise<void> => {
     e.preventDefault();
 
+    // Validation
     if (
-      !formData.fullName ||
+      !formData.firstName ||
+      !formData.lastName ||
       !formData.department ||
-      !formData.speciality ||
+      !formData.jobTitle ||
       !formData.phone ||
       !formData.email
     ) {
@@ -140,53 +160,98 @@ const AddDoctorForm: React.FC = () => {
       return;
     }
 
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      alert("Пожалуйста, введите корректный email адрес");
+      return;
+    }
+
     setIsLoading(true);
 
     try {
-      const submitData = new FormData();
+      // For file upload, we'll need to handle it differently
+      // First, create the doctor without photo
+      const doctorData = {
+        first_name: formData.firstName,
+        last_name: formData.lastName,
+        department: parseInt(formData.department),
+        job_title: formData.jobTitle,
+        phone_number: formData.phone,
+        email: formData.email,
+      };
 
-      submitData.append("full_name", formData.fullName);
-      submitData.append("department", formData.department);
-      submitData.append("speciality", formData.speciality);
-      submitData.append("phone", formData.phone);
-      submitData.append("email", formData.email);
+      console.log("Submitting doctor data:", doctorData);
 
-      if (formData.photo) {
-        submitData.append("photo", formData.photo);
-      }
-
-      console.log("Submitting data:");
-      for (let [key, value] of submitData.entries()) {
-        console.log(key, value);
-      }
-
+      // Post to the correct doctor_create endpoint
       const response = await axios.post(
-        "http://13.60.242.78/ru/doctor/",
-        submitData,
+        `${API_BASE_URL}/doctor_create/`,
+        doctorData,
         {
           headers: {
-            "Content-Type": "multipart/form-data",
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            // You may need to add CSRF token here if required
+            // "X-CSRFTOKEN": "your-csrf-token-here",
           },
+          timeout: 10000, // 10 second timeout
         }
       );
 
       console.log("Doctor added successfully:", response.data);
+
+      // If there's a photo, upload it separately (you may need another endpoint for this)
+      if (formData.photo && response.data.id) {
+        try {
+          const photoFormData = new FormData();
+          photoFormData.append("image", formData.photo);
+
+          await axios.patch(
+            `${API_BASE_URL}/doctor/${response.data.id}/`,
+            photoFormData,
+            {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            }
+          );
+          console.log("Photo uploaded successfully");
+        } catch (photoError) {
+          console.warn("Failed to upload photo:", photoError);
+          alert(
+            "Врач добавлен, но фото не загружено. Попробуйте загрузить фото позже."
+          );
+        }
+      }
+
       alert("Врач успешно добавлен!");
 
+      // Reset form
       setFormData({
-        fullName: "",
+        firstName: "",
+        lastName: "",
         photo: null,
         department: "",
-        speciality: "",
+        jobTitle: "",
         phone: "",
         email: "",
       });
       setPhotoPreview(null);
+
+      // Reset file input
+      const fileInput = document.getElementById(
+        "photo-upload"
+      ) as HTMLInputElement;
+      if (fileInput) {
+        fileInput.value = "";
+      }
     } catch (error) {
       console.error("Error adding doctor:", error);
 
       if (axios.isAxiosError(error)) {
-        if (error.response?.status === 400) {
+        if (error.code === "ECONNABORTED") {
+          alert("Превышено время ожидания. Проверьте интернет соединение.");
+        } else if (error.response?.status === 400) {
           const errorData = error.response.data;
           console.log("Validation errors:", errorData);
 
@@ -200,6 +265,12 @@ const AddDoctorForm: React.FC = () => {
           });
 
           alert(errorMessage);
+        } else if (error.response?.status === 401) {
+          alert("Ошибка авторизации. Проверьте права доступа.");
+        } else if (error.response?.status === 403) {
+          alert("Доступ запрещен. Недостаточно прав.");
+        } else if (error.response?.status === 404) {
+          alert("Эндпоинт не найден. Проверьте URL API.");
         } else if (error.response?.status === 500) {
           alert("Ошибка сервера. Попробуйте позже.");
         } else {
@@ -214,7 +285,7 @@ const AddDoctorForm: React.FC = () => {
   };
 
   if (loadingOptions) {
-    return <div>Загрузка опций...</div>;
+    return <div className={styles.loadingContainer}>Загрузка опций...</div>;
   }
 
   return (
@@ -224,14 +295,28 @@ const AddDoctorForm: React.FC = () => {
 
         <div className={styles.form}>
           <div className={styles.fieldGroup}>
-            <label className={styles.label}>ФИО</label>
+            <label className={styles.label}>Имя *</label>
             <input
               type="text"
-              name="fullName"
-              value={formData.fullName}
+              name="firstName"
+              value={formData.firstName}
               onChange={handleInputChange}
-              placeholder="Асанов Айтенир"
+              placeholder="Айтенир"
               className={styles.input}
+              required
+            />
+          </div>
+
+          <div className={styles.fieldGroup}>
+            <label className={styles.label}>Фамилия *</label>
+            <input
+              type="text"
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleInputChange}
+              placeholder="Асанов"
+              className={styles.input}
+              required
             />
           </div>
 
@@ -260,13 +345,15 @@ const AddDoctorForm: React.FC = () => {
           </div>
 
           <div className={styles.fieldGroup}>
-            <label className={styles.label}>Отделение</label>
+            <label className={styles.label}>Отделение *</label>
             <select
               name="department"
               value={formData.department}
               onChange={handleInputChange}
               className={styles.select}
+              required
             >
+              <option value="">Выберите отделение</option>
               {departments.map((dept) => (
                 <option key={dept.id} value={dept.id}>
                   {dept.name}
@@ -276,23 +363,25 @@ const AddDoctorForm: React.FC = () => {
           </div>
 
           <div className={styles.fieldGroup}>
-            <label className={styles.label}>Специальность</label>
+            <label className={styles.label}>Должность *</label>
             <select
-              name="speciality"
-              value={formData.speciality}
+              name="jobTitle"
+              value={formData.jobTitle}
               onChange={handleInputChange}
               className={styles.select}
+              required
             >
-              {specialities.map((spec) => (
-                <option key={spec.id} value={spec.id}>
-                  {spec.name}
+              <option value="">Выберите должность</option>
+              {jobTitles.map((job) => (
+                <option key={job.id} value={job.name}>
+                  {job.name}
                 </option>
               ))}
             </select>
           </div>
 
           <div className={styles.fieldGroup}>
-            <label className={styles.label}>Контакты</label>
+            <label className={styles.label}>Контакты *</label>
             <input
               type="tel"
               name="phone"
@@ -300,11 +389,12 @@ const AddDoctorForm: React.FC = () => {
               onChange={handleInputChange}
               placeholder="0550 941 433"
               className={styles.input}
+              required
             />
           </div>
 
           <div className={styles.fieldGroup}>
-            <label className={styles.label}>Эл почта</label>
+            <label className={styles.label}>Эл почта *</label>
             <input
               type="email"
               name="email"
@@ -312,6 +402,7 @@ const AddDoctorForm: React.FC = () => {
               onChange={handleInputChange}
               placeholder="asanovaitenir@gmail.com"
               className={styles.input}
+              required
             />
           </div>
 
