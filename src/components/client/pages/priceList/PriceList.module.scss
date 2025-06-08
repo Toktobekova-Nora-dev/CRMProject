@@ -20,41 +20,16 @@
   transition: transform 0.3s ease;
 }
 
-.Open {
-  transform: rotate(-90deg);
-}
-
-.Item {
-  box-shadow: 0px 5px 10px -5px rgba(34, 60, 80, 0.2);
-  border-radius: 10px;
-  margin-bottom: 10px;
-  width: 70%;
-}
-
-.Content {
-  padding: 16px;
-}
-
-.ContentText {
-  padding-left: 32px;
-}
-
-.subTitle {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  font-family: "Nunito", sans-serif;
-}
-
-.left h4,
-.right h4 {
-  margin: 4px 0;
-  color: #2a2a2a;
-  font-size: 18px;
-}
-
 .Root {
+  width: 100%;
+  border-radius: 8px;
   overflow-y: scroll;
+  h4 {
+    font-family: "Nunito", sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    color: #2a2a2a;
+  }
   &::-webkit-scrollbar {
     width: 15px;
   }
@@ -75,4 +50,82 @@
     height: 0px;
     width: 0px;
   }
+}
+
+.Item {
+  box-shadow: 0 6px 2px #f6f7fa;
+}
+
+.Header {
+  display: flex;
+}
+
+.Trigger {
+  width: 100%;
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: bold;
+  border: none;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.Chevron {
+  transition: transform 0.2s ease;
+}
+
+.Open {
+  transform: rotate(-90deg);
+}
+
+.Item {
+  box-shadow: 0px 5px 10px -5px rgba(34, 60, 80, 0.2);
+  border-radius: 10px;
+  margin-bottom: 10px;
+  width: 70%;
+}
+
+.Content {
+  padding: 16px;
+}
+
+.ContentText {
+  padding-left: 32px;
+}
+.Content {
+  padding: 12px 16px;
+  background: #fff;
+  transition: 0.8s;
+}
+
+.ContentText {
+  color: #444;
+}
+
+.subTitle {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  font-family: "Nunito", sans-serif;
+}
+
+.left,
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  h4 {
+    margin: 4px 0;
+    color: #2a2a2a;
+    font-size: 18px;
+  }
+}
+
+.TitleText {
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
 }

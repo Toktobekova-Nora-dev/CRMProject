@@ -3,38 +3,37 @@ import { ChevronRightIcon } from "lucide-react";
 import styles from "./PriceList.module.scss";
 import { useState } from "react";
 
-const PriceList = () => {
+type AccordionItemProps = {
+  title: string;
+  children: React.ReactNode;
+  isOpen: boolean;
+  onClick: () => void;
+};
 
-  type AccordionItemProps = {
-    title: string;
-    children: React.ReactNode;
-    isOpen: boolean;
-    onClick: () => void;
-  };
-
-  const AccordionItem = ({
-    title,
-    children,
-    isOpen,
-    onClick,
-  }: AccordionItemProps) => (
-    <div className={styles.Item}>
-      <div className={styles.Header}>
-        <button className={styles.Trigger} onClick={onClick}>
-          <ChevronRightIcon
-            className={`${styles.Chevron} ${isOpen ? styles.Open : ""}`}
-          />
-          <span className={styles.TitleText}>{title}</span>
-        </button>
-      </div>
-      {isOpen && (
-        <div className={styles.Content}>
-          <div className={styles.ContentText}>{children}</div>
-        </div>
-      )}
+const AccordionItem = ({
+  title,
+  children,
+  isOpen,
+  onClick,
+}: AccordionItemProps) => (
+  <div className={styles.Item}>
+    <div className={styles.Header}>
+      <button className={styles.Trigger} onClick={onClick}>
+        <ChevronRightIcon
+          className={`${styles.Chevron} ${isOpen ? styles.Open : ""}`}
+        />
+        <span className={styles.TitleText}>{title}</span>
+      </button>
     </div>
-  );
+    {isOpen && (
+      <div className={styles.Content}>
+        <div className={styles.ContentText}>{children}</div>
+      </div>
+    )}
+  </div>
+);
 
+const PriceList = () => {
   const [openItem, setOpenItem] = useState<string | null>(null);
 
   const handleToggle = (item: string) => {
