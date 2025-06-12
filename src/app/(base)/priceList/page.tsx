@@ -1,7 +1,12 @@
+import PriceList from "@/components/client/pages/priceList/PriceList";
 import React from "react";
 
 const page = () => {
-  return <div>Price List</div>;
+  return (
+    <div>
+      <PriceList />
+    </div>
+  );
 };
 
 export default page;
