@@ -1,10 +1,10 @@
-import PriceList from "@/components/client/pages/priceList/PriceList";
+import EditDoctor from "@/components/client/pages/editDoctor/EditDoctor";
 import React from "react";
 
 const page = () => {
   return (
     <div>
-      <PriceList />
+      <EditDoctor />
     </div>
   );
 };
