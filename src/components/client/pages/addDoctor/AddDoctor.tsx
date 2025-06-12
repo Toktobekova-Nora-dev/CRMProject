@@ -263,7 +263,6 @@ const AddDoctorForm: React.FC = () => {
               errorMessage += `${field}: ${errorData[field]}\n`;
             }
           });
-
           alert(errorMessage);
         } else if (error.response?.status === 401) {
           alert("Ошибка авторизации. Проверьте права доступа.");
@@ -342,7 +341,6 @@ const AddDoctorForm: React.FC = () => {
                 />
               )}
             </div>
-            <button className={style.submit} type="submit">Добавить врача</button>
           </div>
 
           <div className={styles.fieldGroup}>
