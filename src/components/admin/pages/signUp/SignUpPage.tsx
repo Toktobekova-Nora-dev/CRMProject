@@ -1,8 +1,9 @@
 "use client";
-
 import React, { useState } from "react";
 import scss from "./SignUpPage.module.scss";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useRegister } from "@/hooks/useRegister";
+import { useRouter } from "next/navigation";
 
 type FormData = {
   fullName: string;
@@ -15,6 +16,7 @@ type FormData = {
 };
 
 const SignUpPage = () => {
+  const router = useRouter();
   const {
     register,
     reset,
@@ -22,17 +24,33 @@ const SignUpPage = () => {
     formState: { errors },
   } = useForm<FormData>();
 
-  console.log(errors);
+  const [select, setSelect] = useState("Администратор");
 
-  const [select, useSelect] = useState("Администратор");
-  console.log(select);
+  const { registerUser, data, isLoading, error } = useRegister();
+
+  const onSubmit: SubmitHandler<FormData> = async (formData) => {
+    const dataToSend = {
+      ...formData,
+      select,
+    };
+
+    router.push("/");
+    // const { result, error } = await registerUser(dataToSend);
+    // if (result) {
+    //   console.log("Success:", result);
+    //   reset();
+    // } else {
+    //   console.error("Registration failed:", error);
+    // }
+  };
 
   return (
     <div className={scss.wrapper}>
       <div className={scss.content}>
         <div className={scss.sining}>
           <h1>Войти в систему</h1>
-          <form>
+          {/* Добавлен handleSubmit */}
+          <form onSubmit={handleSubmit(onSubmit)}>
             <p>ФИО</p>
             <input
               type="text"
@@ -46,6 +64,7 @@ const SignUpPage = () => {
               })}
             />
             {errors.fullName && <span>{errors.fullName.message}</span>}
+
             {select === "Врач" && (
               <div>
                 <p>Специальность</p>
@@ -62,18 +81,20 @@ const SignUpPage = () => {
                   })}
                 />
                 {errors.specialty && <span>{errors.specialty.message}</span>}
+
                 <p>Медицинская лицензия</p>
                 <input
                   type="text"
-                  placeholder="Специальность"
+                  placeholder="Номер лицензии"
                   {...register("license", {
                     required: "Укажите лицензию",
-                    minLength: { value: 7, message: "Укажите лицензию" },
+                    minLength: { value: 7, message: "Минимум 7 символов" },
                   })}
                 />
                 {errors.license && <span>{errors.license.message}</span>}
               </div>
             )}
+
             <p>Email</p>
             <input
               type="email"
@@ -87,6 +108,7 @@ const SignUpPage = () => {
               })}
             />
             {errors.email && <span>{errors.email.message}</span>}
+
             <p>Телефон</p>
             <input
               type="text"
@@ -111,41 +133,47 @@ const SignUpPage = () => {
               })}
             />
             {errors.password && <span>{errors.password.message}</span>}
+
             <p>Выберите роль</p>
             <div className={scss.role}>
               <div className={scss.select}>
                 <input
                   type="radio"
-                  value={"Администратор"}
+                  value="Администратор"
                   {...register("select")}
                   checked={select === "Администратор"}
-                  onChange={(e) => useSelect(e.target.value)}
+                  onChange={(e) => setSelect(e.target.value)}
                 />
                 <p>Администратор</p>
               </div>
               <div className={scss.select}>
                 <input
                   type="radio"
-                  value={"Врач"}
+                  value="Врач"
                   {...register("select")}
                   checked={select === "Врач"}
-                  onChange={(e) => useSelect(e.target.value)}
+                  onChange={(e) => setSelect(e.target.value)}
                 />
                 <p>Врач</p>
               </div>
               <div className={scss.select}>
                 <input
                   type="radio"
-                  value={"Ресепшн"}
+                  value="Ресепшн"
                   {...register("select")}
                   checked={select === "Ресепшн"}
-                  onChange={(e) => useSelect(e.target.value)}
+                  onChange={(e) => setSelect(e.target.value)}
                 />
                 <p>Ресепшн</p>
               </div>
             </div>
-            <button type="submit">
-              {select === "Врач" ? "Регистрация" : "Войти"}
+
+            <button type="submit" disabled={isLoading}>
+              {isLoading
+                ? "Загрузка..."
+                : select === "Врач"
+                ? "Регистрация"
+                : "Войти"}
             </button>
           </form>
         </div>
