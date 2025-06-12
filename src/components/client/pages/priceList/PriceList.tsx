@@ -3,7 +3,19 @@ import { ChevronRightIcon } from "lucide-react";
 import styles from "./PriceList.module.scss";
 import { useState } from "react";
 
-const AccordionItem = ({ title, children, isOpen, onClick }) => (
+type AccordionItemProps = {
+  title: string;
+  children: React.ReactNode;
+  isOpen: boolean;
+  onClick: () => void;
+};
+
+const AccordionItem = ({
+  title,
+  children,
+  isOpen,
+  onClick,
+}: AccordionItemProps) => (
   <div className={styles.Item}>
     <div className={styles.Header}>
       <button className={styles.Trigger} onClick={onClick}>
@@ -22,8 +34,9 @@ const AccordionItem = ({ title, children, isOpen, onClick }) => (
 );
 
 const PriceList = () => {
-  const [openItem, setOpenItem] = useState("item-1");
-  const handleToggle = (item) => {
+  const [openItem, setOpenItem] = useState<string | null>(null);
+
+  const handleToggle = (item: string) => {
     setOpenItem((prev) => (prev === item ? null : item));
   };
 
