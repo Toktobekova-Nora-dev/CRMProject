@@ -1,10 +1,8 @@
 "use client";
-
 import { PieChart, TrendingDown, TrendingUp } from "lucide-react";
 import { LineChart, Line, XAxis, YAxis, ResponsiveContainer } from "recharts";
 
 const Analytics = () => {
-  // Mock data for the chart
   const chartData = [
     { name: "Фев 20", allRecords: 100, cancelled: 3800 },
     { name: "Фев 21", allRecords: 2800, cancelled: 2200 },
@@ -139,7 +137,6 @@ const Analytics = () => {
                       tick={{ fontSize: 12, fill: "#9CA3AF" }}
                       tickFormatter={(value) => `${value / 1000}K`}
                     />
-                    {/* Blue line for all records */}
                     <Line
                       type="monotone"
                       dataKey="allRecords"
@@ -148,7 +145,6 @@ const Analytics = () => {
                       dot={false}
                       activeDot={{ r: 6, fill: "#3B82F6" }}
                     />
-                    {/* Orange line for cancelled records */}
                     <Line
                       type="monotone"
                       dataKey="cancelled"
@@ -161,14 +157,11 @@ const Analytics = () => {
                 </ResponsiveContainer>
               </div>
 
-              {/* Data point indicator */}
               <div className="absolute top-8 right-8">
                 <div className="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">
                   220
                 </div>
               </div>
-
-              {/* Chart Legend */}
             </div>
           </div>
         </div>
