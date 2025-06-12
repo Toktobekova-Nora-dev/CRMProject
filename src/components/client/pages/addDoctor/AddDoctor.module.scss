@@ -206,6 +206,147 @@
     .form__group select {
       font-size: 14px;
     }
+    .submitButton:hover {
+      background-color: #1e6bc7;
+      .addDoctor {
+        padding: 40px 0;
+        background-color: #f9f9f9;
+        min-height: 100vh;
+
+        .container {
+          // max-width: 800px;
+          margin: 0 auto;
+          padding: 0 20px;
+        }
+  .submitButton:hover {
+    background-color: #1e6bc7;
+  }
+}
+.addDoctor {
+  padding: 40px 0;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+
+  .container {
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+        &__form {
+          background-color: #fff;
+          padding: 30px;
+          border-radius: 12px;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        &__title {
+          font-size: 28px;
+          font-weight: bold;
+          margin-bottom: 25px;
+          text-align: center;
+          color: #333;
+        }
+      }
+
+      .form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+  &__title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    text-align: center;
+    color: #333;
+  }
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 300px;
+}
+.custom-file-label {
+  display: inline-block;
+  padding: 10px 16px;
+  background-color: #4f46e5;
+  color: white;
+  cursor: pointer;
+  border-radius: 8px;
+  text-align: center;
+  transition: background 0.3s ease;
+}
+.custom-file-label:hover {
+  background-color: #4338ca;
+}
+.hidden-file-input {
+  display: none;
+}
+.file-name {
+  font-size: 14px;
+  color: #4b5563; 
+  gap: 20px;
+
+        &__group {
+          display: flex;
+          flex-direction: column;
+
+          label {
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+          }
+
+          input,
+          select {
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+
+            &:focus {
+              border-color: #007bff;
+              outline: none;
+            }
+          }
+        }
+
+        .submit {
+          padding: 14px;
+          background-color: #007bff;
+          border: none;
+          border-radius: 30px;
+          font-size: 16px;
+          color: white;
+          font-weight: 600;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+
+          &:hover {
+            background-color: #0056b3;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 600px) {
+  .addDoctor {
+    padding: 20px 0;
+
+    &__form {
+      padding: 20px;
+    }
+
+    &__title {
+      font-size: 22px;
+    }
+
+    .form__group input,
+    .form__group select {
+      font-size: 14px;
+    }
 
     .form__submit {
       font-size: 14px;
