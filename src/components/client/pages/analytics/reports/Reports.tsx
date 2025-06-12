@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import styles from "./Analytics.module.scss";
+import styles from "./Reports.module.scss";
 import axios from "axios";
 
 interface RecordItem {
@@ -40,7 +40,7 @@ const departments = [
 
 const periods = ["Ежедневно", "Еженедельно", "Ежемесячно"];
 
-const Analytics = () => {
+const Reports = () => {
   const [selectedDoctor, setSelectedDoctor] = useState<string>("Все врачи");
   const [selectedDepartment, setSelectedDepartment] =
     useState<string>("Все отделения");
@@ -288,4 +288,4 @@ const Analytics = () => {
   );
 };
 
-export default Analytics;
+export default Reports;

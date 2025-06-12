@@ -1,10 +1,10 @@
-import Calendar from "@/components/client/pages/calendar/Calendar";
+import AddUsersPage from "@/components/client/pages/addUsers/AddUsersPage";
 import React from "react";
 
 const page = () => {
   return (
     <div>
-      <Calendar />
+      <AddUsersPage />
     </div>
   );
 };
