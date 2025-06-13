@@ -1,10 +1,10 @@
 import { usePathname } from "next/navigation";
 import styles from "./Header.module.scss";
 import { Bell, ChevronRight, Folder } from "lucide-react";
+import Link from "next/link";
 
 const Header = () => {
   const pathname = usePathname();
-
   const analytics = pathname === "/analytics";
 
   return (
@@ -17,7 +17,7 @@ const Header = () => {
             {analytics ? (
               <div className={styles.analytics}>
                 <Folder />
-                <span>Отчеты</span>
+                <Link href="/analytics/report">Отчеты</Link>
               </div>
             ) : null}
             <Bell size={30} className={styles.bell} />
