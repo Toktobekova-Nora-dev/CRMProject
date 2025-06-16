@@ -1,6 +1,10 @@
-import Analytics from "@/components/client/pages/analytics/Analytics";
+import Analytics from "../../../components/client/pages/analitcs/Analytics";
 import React from "react";
 
-const page = () => <Analytics />;
-
-export default page;
+const page = () => {
+  return (
+    <div>
+      <Analytics />
+    </div>
+  );
+};

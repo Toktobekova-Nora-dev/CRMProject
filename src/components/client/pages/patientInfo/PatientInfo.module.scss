@@ -1,0 +1,89 @@
+.patientInfo {
+  h1 {
+    text-align: center;
+  }
+  .content {
+    h2 {
+      margin-block: 5px;
+    }
+
+    .btns {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      button {
+        border-radius: 12px;
+        border: 2px solid #dde2eb;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 24px;
+        width: 170px;
+        height: 40px;
+
+        &:focus {
+          border: 2px solid #1c5a9f;
+        }
+      }
+    }
+  }
+
+  form {
+    margin-block: 20px;
+    display: flex;
+    justify-content: space-between;
+    input {
+      border: 2px solid #dde2eb;
+      width: 500;
+      height: 50;
+      border-radius: 8px;
+      border-width: 2px;
+      padding-inline: 10px;
+      margin-block: 5px;
+    }
+    label {
+      font-size: 15px;
+    }
+    select {
+      border: 2px solid #dde2eb;
+      width: 500;
+      height: 50;
+      border-radius: 8px;
+      border-width: 2px;
+      padding-inline: 10px;
+      margin-block: 5px;
+    }
+  }
+  .double {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+
+    button {
+      width: 200;
+      height: 30;
+      border: 2px solid #dde2eb;
+      border-radius: 45px;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 150%;
+      letter-spacing: -1.9%;
+      text-align: center;
+
+      &:focus {
+        width: 200;
+        height: 30;
+        border-radius: 45px;
+        background-color: #267cdc;
+        color: white;
+      }
+    }
+    // button:nth-child(2) {
+    //   width: 200;
+    //   height: 30;
+    //   border-radius: 45px;
+    //   background-color: #267cdc;
+    //   color: white;
+    // }
+  }
+}
