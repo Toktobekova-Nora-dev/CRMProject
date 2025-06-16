@@ -27,6 +27,14 @@
     display: flex;
     align-items: center;
     gap: 15px;
+    .analytics {
+      display: flex;
+      gap: 10px;
+      border: 2px solid rgba(221, 226, 235, 1);
+      padding: 14px 34px;
+      border-radius: 12px;
+      margin-right: 10px;
+    }
     .bell {
       border: 1px solid rgba(203, 213, 225, 1);
       color: rgba(38, 124, 220, 1);
@@ -35,6 +43,12 @@
       height: 50px;
       border-radius: 50%;
       cursor: pointer;
+    }
+    .line {
+      width: 3;
+      height: 49;
+      border-radius: 10px;
+      background: rgba(243, 243, 243, 1);
     }
     .avatar {
       width: 72px;

@@ -1,10 +1,10 @@
-import Doctors from "@/components/client/pages/doctors/Doctors";
+import EditDoctor from "@/components/client/pages/editDoctor/EditDoctor";
 import React from "react";
 
 const page = () => {
   return (
     <div>
-      <Doctors />
+      <EditDoctor />
     </div>
   );
 };

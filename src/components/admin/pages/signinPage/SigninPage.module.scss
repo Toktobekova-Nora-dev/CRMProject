@@ -5,7 +5,7 @@
 
   .left {
     flex: 1;
-    background: url("../../../../../public/img/Frame\ 1171275422.png") no-repeat;
+    background: url("../../../../../public/Frame\ 1171275422.png") no-repeat;
     color: white;
     padding: 60px 40px;
     display: flex;
@@ -101,6 +101,69 @@
         &:hover {
           background-color: #145bcc;
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .content {
+    flex-direction: column;
+  }
+  .left,
+  .right {
+    flex: none;
+    width: 100%;
+    padding: 40px 20px;
+  }
+
+  .left {
+    background-position: center top;
+  }
+
+  .right {
+    padding-top: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .left {
+    h1 {
+      font-size: 24px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+
+    .leftButton {
+      padding: 10px 40px;
+      font-size: 14px;
+    }
+  }
+
+  .right {
+    h2 {
+      font-size: 22px;
+    }
+
+    form {
+      gap: 16px;
+
+      label {
+        font-size: 13px;
+      }
+
+      .inputGroup {
+        padding: 8px;
+        input {
+          font-size: 13px;
+        }
+      }
+
+      .rightButton {
+        font-size: 14px;
+        padding: 10px;
       }
     }
   }

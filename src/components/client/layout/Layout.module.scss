@@ -1,6 +1,7 @@
 .layout {
   display: flex;
   height: 100vh;
+  background: rgb(252, 252, 252);
 }
 
 .right {
@@ -11,10 +12,8 @@
 
 .main {
   flex: 1;
-  margin: 40px 30px;
   overflow-y: auto;
   padding: 20px;
-  background: #ffffff;
-  border: 1px solid rgba(203, 213, 225, 1);
+
   border-radius: 20px;
 }
